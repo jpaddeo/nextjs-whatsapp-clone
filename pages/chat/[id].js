@@ -5,7 +5,8 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import Sidebar from '../../components/Sidebar';
 import ChatScreen from '../../components/ChatScreen';
 
-import { auth, db } from '../../firebase';
+import { db, auth } from '../../firebase';
+import { firestore } from '../../firebase-admin';
 import getRecipientEmail from '../../utils/getRecipientEmail';
 
 function Chat({ chat, messages }) {
@@ -27,7 +28,8 @@ function Chat({ chat, messages }) {
 export default Chat;
 
 export async function getServerSideProps(context) {
-  const ref = db.collection('chats').doc(context.query.id);
+
+  const ref = firestore.collection('chats').doc(context.query.id);
   const messagesRes = await ref
     .collection('messages')
     .orderBy('timestamp', 'asc')

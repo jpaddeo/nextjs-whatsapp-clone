@@ -8,7 +8,7 @@ import Loading from '../components/Loading';
 
 import '../styles/globals.css';
 
-function MyApp({ Component, pageProps }) {
+function WhatsappClone({ Component, pageProps }) {
   const [user, loading] = useAuthState(auth);
 
   useEffect(() => {
@@ -30,4 +30,4 @@ function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />;
 }
 
-export default MyApp;
+export default WhatsappClone;
